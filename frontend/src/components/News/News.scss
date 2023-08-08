@@ -1,0 +1,32 @@
+@import '../../utils/variables';
+@import 'slick-carousel/slick/slick';
+@import 'slick-carousel/slick/slick-theme';
+.news {
+  height: 100%;
+}
+
+.news-item{
+  &__image{
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+
+//slick
+
+.slick-arrow{
+  display: none;
+  width: 0;
+  height: 0;
+  &:before{
+    content: '';
+  }
+}
+
+
+.slick-dots>li>button:before{
+  font-size: 40px;
+}

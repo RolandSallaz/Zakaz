@@ -1,0 +1,60 @@
+@import '../../utils/variables';
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    margin-top: 115px;
+  }
+
+  &__heading {
+    margin: 0 auto;
+    border-bottom: 15px solid;
+    font-size: 90px;
+    line-height: 125%;
+    font-weight: 500;
+    width: min-content;
+  }
+
+  &__description {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+.nav {
+  background-color: $orangeSelect;
+  height: 55px;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #be6b29;
+      transition: background-color 0.4s ease-in-out;
+    }
+  }
+}
+
+.info-list {
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+  list-style: none;
+}
+
