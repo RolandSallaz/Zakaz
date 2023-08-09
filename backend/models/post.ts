@@ -1,4 +1,4 @@
-import { Model, Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 interface IPost {
   image: string
@@ -11,22 +11,22 @@ const postSchema = new Schema<IPost>(
   {
     image: {
       type: String,
-      required: true,
+      required: true
     },
     heading: {
       type: String,
-      required: true,
+      required: true
     },
     description: {
       type: String,
-      required: true,
+      required: true
     },
     creationDate: {
       type: Date,
-      default: Date.now,
-    },
+      default: Date.now
+    }
   },
-  { versionKey: false },
+  { versionKey: false }
 )
 
 export default model<IPost>('post', postSchema)

@@ -16,12 +16,9 @@ export function getPosts(req: Request, res: Response, next: NextFunction) {
 export function addPost(req: Request, res: Response, next: NextFunction) {
   const { heading, description } = req.body
   const image = req.files?.image as UploadedFile
-  const imageLink = `images/${String(
-    uid(),
-  )}${Date.now()}.${image.mimetype.replace('image/', '')}`
+  const imageLink = `images/${String(uid())}${Date.now()}.${image.mimetype.replace('image/', '')}`
   fs.writeFile(imageLink, image.data, (err) => {
     if (err) {
-      console.log(err)
       return next(err)
     } else {
       Post.create({ image: imageLink, heading, description })

@@ -9,9 +9,8 @@ export default (req: Request, res: Response, next: NextFunction) => {
     return next(new AuthorizationError())
   }
   const token = authorization.replace('Bearer ', '')
-  let payload
   try {
-    payload = jwt.verify(token, ADMIN_PAS)
+    jwt.verify(token, ADMIN_PAS)
   } catch (e) {
     next(new AuthorizationError())
   }
