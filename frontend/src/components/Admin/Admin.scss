@@ -2,19 +2,49 @@
   display: flex;
   flex-direction: column;
   background-color: #1a1a1a;
-  min-height: 50vh;
+  min-height: 60vh;
+  &__button{
+    height: 40px;
+    margin-right: 10px;
+    font-size: 20px;
+    background-color: #cecece;
+  }
 }
 .admin-form {
+  margin:0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 270px;
   &__heading {
+    margin:0;
+    margin-top: 20px;
     font-size: 30px;
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
     0.025em 0.04em 0 #fffc00;
+    animation: glitch 725ms infinite;
+  }
+  &__input{
+    margin-top: 20px;
+    height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    font-size: 20px;
+  }
+  &__submit-button{
+    margin-top: 20px;
+    height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 1px #c9c9c9;
+    border: none;
+    font-size: 20px;
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff;
     animation: glitch 725ms infinite;
   }
 }
