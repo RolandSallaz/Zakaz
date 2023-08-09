@@ -1,6 +1,9 @@
 import { NextFunction, Response, Request } from 'express'
 import Post from '../models/post'
 import ValidationError from '../errors/ValidationError'
+import { UploadedFile } from 'express-fileupload'
+import { uid } from 'uid'
+import * as fs from 'fs'
 
 export function getPosts(req: Request, res: Response, next: NextFunction) {
   Post.find({})
@@ -11,14 +14,25 @@ export function getPosts(req: Request, res: Response, next: NextFunction) {
 }
 
 export function addPost(req: Request, res: Response, next: NextFunction) {
-  const { image, heading, description } = req.body
-  Post.create({ image, heading, description })
-    .then((post) => res.status(201).send(post))
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        return next(new ValidationError())
-      } else {
-        next(err)
-      }
-    })
+  const { heading, description } = req.body
+  const image = req.files?.image as UploadedFile
+  const imageLink = `images/${String(
+    uid(),
+  )}${Date.now()}.${image.mimetype.replace('image/', '')}`
+  fs.writeFile(imageLink, image.data, (err) => {
+    if (err) {
+      console.log(err)
+      return next(err)
+    } else {
+      Post.create({ image: imageLink, heading, description })
+        .then((post) => res.status(201).send(post))
+        .catch((err) => {
+          if (err.name === 'ValidationError') {
+            return next(new ValidationError())
+          } else {
+            next(err)
+          }
+        })
+    }
+  })
 }

@@ -1,23 +1,28 @@
-.admin{
+
+.admin {
   display: flex;
   flex-direction: column;
   background-color: #1a1a1a;
   min-height: 60vh;
-  &__button{
+
+  &__button {
     height: 40px;
     margin-right: 10px;
     font-size: 20px;
     background-color: #cecece;
   }
 }
+
+
 .admin-form {
-  margin:0 auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 270px;
+
   &__heading {
-    margin:0;
+    margin: 0;
     margin-top: 20px;
     font-size: 30px;
     font-weight: 700;
@@ -27,14 +32,16 @@
     0.025em 0.04em 0 #fffc00;
     animation: glitch 725ms infinite;
   }
-  &__input{
+
+  &__input {
     margin-top: 20px;
     height: 30px;
     width: 100%;
     border-radius: 3px;
     font-size: 20px;
   }
-  &__submit-button{
+
+  &__submit-button {
     margin-top: 20px;
     height: 30px;
     width: 100%;

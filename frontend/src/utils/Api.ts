@@ -10,21 +10,33 @@ export function getPosts() {
     return fetch(`${API_URL}/posts`).then<IPost>(checkResponse)
 }
 
+export function sendPost(form: HTMLFormElement) {
+    const data = new FormData(form);
+    console.log(Array.from(data));
+    return fetch(`${API_URL}/posts`, {
+        method: "POST",
+        headers: {
+
+            authorization: `Bearer ${localStorage.getItem('jwt')}`
+        },
+        body: data
+    }).then<IPost>(checkResponse)
+}
+
 export function adminLogin(password: string) {
     return fetch(`${API_URL}/admin/signin`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json;charset=utf-8",
-            "credentials": 'include',
         },
         body: JSON.stringify({password})
-    }).then<IMessage>(checkResponse)
+    }).then<{ token: string }>(checkResponse)
 }
 
-export function checkToken() {
+export function checkToken(token: string) {
     return fetch(`${API_URL}/admin/checkToken`, {
         headers: {
-            "credentials": 'include'
+            authorization: `Bearer ${token}`
         }
     }).then<IMessage>(checkResponse)
 }
