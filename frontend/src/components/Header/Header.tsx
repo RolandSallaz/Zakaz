@@ -5,18 +5,18 @@ export function Header() {
         <header className='header'>
             <div className='header__container'>
                 <h1 className='header__heading'>СТРОЙ<span className='orange-select'>ПРОФ</span>СЕРВИС</h1>
-                <p className='header__description orange-select'>МНОГОПРОФИЛЬНЫЙ УЧЕБНЫЙ ЦЕНТР</p>
+                <p className='header__description orange-select'>Подрядная организация</p>
             </div>
             <ul className='info-list'>
-                <li className='info-list__item'>
-                    Г. Челябинск
-                </li>
-                <li className='info-list__item'>
-                    Г. Челябинск
-                </li>
-                <li className='info-list__item'>
-                    Г. Челябинск
-                </li>
+                {/*<li className='info-list__item'>*/}
+                {/*    Г. Челябинск*/}
+                {/*</li>*/}
+                {/*<li className='info-list__item'>*/}
+                {/*    Г. Челябинск*/}
+                {/*</li>*/}
+                {/*<li className='info-list__item'>*/}
+                {/*    Г. Челябинск*/}
+                {/*</li>*/}
             </ul>
             <nav className='nav'>
                 <Link className='nav__link' to='/'>Главная</Link>
