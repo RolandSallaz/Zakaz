@@ -4,13 +4,9 @@ import {Route, Routes} from "react-router-dom";
 import {News} from "../News/News";
 import {Admin} from "../Admin/Admin";
 import {Footer} from "../Footer/Footer";
-import {useEffect} from "react";
-import {getPosts} from "../../utils/Api";
 
 function App() {
-    useEffect(()=>{
-        getPosts().then(console.log).catch(console.log)
-    },[])
+
     return (
         <>
             <Header/>

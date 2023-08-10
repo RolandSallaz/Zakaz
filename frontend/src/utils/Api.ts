@@ -1,13 +1,13 @@
-import {IMessage, IPost} from "../types";
+import {IMessage, IPost} from "../types/interfaces";
 
-const API_URL = 'http://localhost:3000'
+export const API_URL = 'http://localhost:3000'
 
 const checkResponse = <T>(res: Response): Promise<T> => {
     return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
 
 export function getPosts() {
-    return fetch(`${API_URL}/posts`).then<IPost>(checkResponse)
+    return fetch(`${API_URL}/posts`).then<IPost[]>(checkResponse)
 }
 
 export function sendPost(form: HTMLFormElement) {

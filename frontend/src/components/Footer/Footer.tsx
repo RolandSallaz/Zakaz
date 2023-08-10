@@ -5,4 +5,4 @@ export function Footer() {
             <div className={'footer__container'}><p className={'copyrigth'}>&copy; {new Date().getFullYear()} СТРОЙПРОФСЕРВИС</p></div>
         </footer>
     );
-};
+}

@@ -1,6 +1,6 @@
 import './Admin.scss';
 import {adminLogin, checkToken, sendPost} from "../../utils/Api";
-import {FormEvent, FormEventHandler, SyntheticEvent, useEffect, useRef, useState} from "react";
+import {FormEvent, FormEventHandler, useEffect, useRef, useState} from "react";
 import {AdminPopup} from "../AdminPopup/AdminPopup";
 import {ADMIN_POPUPS} from "../../utils/enums";
 
@@ -80,4 +80,4 @@ export function Admin() {
 
         </div>
     );
-};
+}

@@ -1,15 +1,15 @@
 import './AdminPopup.scss'
-import {ReactNode} from "react";
+import {LegacyRef, ReactNode} from "react";
 
 interface IProps {
     children?: ReactNode
     onSubmit: () => void
     onClose: () => void
     isOpen: boolean
-    refProp?: HTMLFormElement
+    refProp?: LegacyRef<HTMLFormElement>
 }
 
-export function AdminPopup({children, onClose, onSubmit, isOpen, refProp}) {
+export function AdminPopup({children, onClose, onSubmit, isOpen, refProp}:IProps) {
     return (
         <div className={`admin-modal ${isOpen && 'admin-modal_open'}`}>
             <button className={'admin-modal__close-button'} onClick={onClose}>
@@ -20,4 +20,4 @@ export function AdminPopup({children, onClose, onSubmit, isOpen, refProp}) {
             </form>
         </div>
     );
-};
+}
