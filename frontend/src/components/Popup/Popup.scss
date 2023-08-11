@@ -1,0 +1,21 @@
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  &__container {
+    width: 600px;
+    padding: 40px;
+    border-radius: 20px;
+    min-height: 600px;
+    background-color: white;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+}

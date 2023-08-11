@@ -4,7 +4,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  user-select: none;
+  pointer-events: none;
   &__container {
     margin-top: 115px;
   }
@@ -16,6 +17,7 @@
     line-height: 125%;
     font-weight: 500;
     width: min-content;
+    text-transform: uppercase;
   }
 
   &__description {

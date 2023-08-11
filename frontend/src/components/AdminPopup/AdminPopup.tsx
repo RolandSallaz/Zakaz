@@ -1,12 +1,12 @@
 import './AdminPopup.scss'
-import {LegacyRef, ReactNode} from "react";
+import {MutableRefObject, ReactNode, SyntheticEvent} from "react";
 
 interface IProps {
-    children?: ReactNode
-    onSubmit: () => void
-    onClose: () => void
-    isOpen: boolean
-    refProp?: LegacyRef<HTMLFormElement>
+    children?: ReactNode;
+    onSubmit: (e:SyntheticEvent<HTMLFormElement>) => void;
+    onClose: () => void;
+    isOpen: boolean;
+    refProp?: MutableRefObject<HTMLFormElement>;
 }
 
 export function AdminPopup({children, onClose, onSubmit, isOpen, refProp}:IProps) {

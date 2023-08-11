@@ -7,9 +7,20 @@ import {useEffect, useState} from "react";
 import {getPosts} from "../../utils/Api";
 import {IPost} from "../../types/interfaces";
 import {Post} from "../Post/Post";
+import {Popup} from "../Popup/Popup";
 
 export function News() {
     const [posts, setPosts] = useState<IPost[]>([])
+    const [selectedPost, setSelectedPost] = useState<IPost | null>(null)
+
+    function handlePostClick(post: IPost) {
+        setSelectedPost(post)
+    }
+
+    function handleClosePopup() {
+        setSelectedPost(null)
+    }
+
     useEffect(() => {
         getPosts()
             .then(setPosts)
@@ -35,8 +46,11 @@ export function News() {
                 </Slider>
             </section>
             <section className='posts'>
-                {posts.map((item) => (<Post item={item}/>))}
+                {posts.map((item) => (<Post item={item} onPostClick={handlePostClick}/>))}
             </section>
+            {selectedPost && <Popup onClose={handleClosePopup}>
+                <Post item={selectedPost} onPostClick={handlePostClick} isReading/>
+            </Popup>}
         </div>
     );
 }

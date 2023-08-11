@@ -5,7 +5,7 @@ export function Header() {
         <header className='header'>
             <div className='header__container'>
                 <h1 className='header__heading'>СТРОЙ<span className='orange-select'>ПРОФ</span>СЕРВИС</h1>
-                <p className='header__description orange-select'>Подрядная организация</p>
+                <p className='header__description orange-select'>Подрядочная организация</p>
             </div>
             <ul className='info-list'>
                 {/*<li className='info-list__item'>*/}

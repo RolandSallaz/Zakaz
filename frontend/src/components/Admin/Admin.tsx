@@ -1,23 +1,23 @@
 import './Admin.scss';
-import {adminLogin, checkToken, sendPost} from "../../utils/Api";
-import {FormEvent, FormEventHandler, useEffect, useRef, useState} from "react";
+import {sendPost} from "../../utils/Api";
+import {FormEvent, MutableRefObject, SyntheticEvent, useContext, useRef, useState} from "react";
 import {AdminPopup} from "../AdminPopup/AdminPopup";
 import {ADMIN_POPUPS} from "../../utils/enums";
+import {LoggedInContext} from "../../contexts/LoggedInContexts";
 
-export function Admin() {
+interface IProps {
+    onLogin: (password: string) => void
+}
+
+export function Admin({onLogin}: IProps) {
     const [password, setPassword] = useState<string>('')
-    const [loggedIn, setLoggedIn] = useState<boolean>(false)
     const [modalOpen, setModalOpen] = useState<ADMIN_POPUPS | null>(null)
-    const addPostRef = useRef<HTMLFormElement>()
+    const addPostRef = useRef<HTMLFormElement | null>(null)
+    const loggedIn = useContext(LoggedInContext)
 
     function handleLoginSubmit(e: React.SyntheticEvent) {
         e.preventDefault()
-        adminLogin(password)
-            .then(({token}) => {
-                localStorage.setItem('jwt',token);
-                setLoggedIn(true)
-            })
-            .catch(console.log)
+        onLogin(password)
     }
 
     function handlePasswordChange(e: FormEvent<HTMLInputElement>) {
@@ -29,22 +29,15 @@ export function Admin() {
         setModalOpen(ADMIN_POPUPS.ADD_POST)
     }
 
-    function handleAddPostSubmit(e: FormEventHandler<HTMLFormElement>) {
+    function handleAddPostSubmit(e: SyntheticEvent<HTMLFormElement>) {
         e.preventDefault()
-        sendPost(addPostRef.current).then(console.log).catch(console.log)
+        sendPost(addPostRef.current!).then(console.log).catch(console.log)
+
     }
 
     function closePopups() {
         setModalOpen(null)
     }
-
-
-    useEffect(() => {
-        const token = localStorage.getItem('jwt')
-        if (token) {
-            checkToken(token).then(()=>setLoggedIn(true)).catch(console.log)
-        }
-    }, [])
 
     return (
         <div className='admin'>
@@ -58,7 +51,7 @@ export function Admin() {
                             <button className={'admin__button'}>Удалить слайдер</button>
                         </div>
                         <AdminPopup onSubmit={handleAddPostSubmit} isOpen={modalOpen === ADMIN_POPUPS.ADD_POST}
-                                    onClose={closePopups} refProp={addPostRef}>
+                                    onClose={closePopups} refProp={addPostRef as MutableRefObject<HTMLFormElement>}>
                             <input className={'admin-modal__input'} placeholder='image' name='image' type="file"
                                    accept="image/*"/>
                             <input className={'admin-modal__input'} placeholder='Заголовок' name='heading'/>
