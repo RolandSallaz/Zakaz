@@ -1,5 +1,6 @@
 import './Header.scss'
 import {Link} from "react-router-dom";
+
 export function Header() {
     return (
         <header className='header'>
@@ -20,9 +21,9 @@ export function Header() {
             </ul>
             <nav className='nav'>
                 <Link className='nav__link' to='/'>Главная</Link>
-                <Link className='nav__link' to={'/2'}>Информация</Link>
-                <Link className='nav__link' to={'/3'}>Каталог услуг</Link>
-                <Link className='nav__link' to={'/4'}>Документации</Link>
+                <Link className='nav__link' to={'/information'}>Информация</Link>
+                <Link className='nav__link' to={'/catalog'}>Каталог услуг</Link>
+                <Link className='nav__link' to={'/documentation'}>Документации</Link>
             </nav>
         </header>
     );

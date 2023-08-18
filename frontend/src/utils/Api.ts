@@ -16,7 +16,6 @@ export function sendPost(form: HTMLFormElement) {
     return fetch(`${API_URL}/posts`, {
         method: "POST",
         headers: {
-
             authorization: `Bearer ${localStorage.getItem('jwt')}`
         },
         body: data
@@ -37,6 +36,15 @@ export function checkToken(token: string) {
     return fetch(`${API_URL}/admin/checkToken`, {
         headers: {
             authorization: `Bearer ${token}`
+        }
+    }).then<IMessage>(checkResponse)
+}
+
+export function deletePost(_id: string) {
+    return fetch(`${API_URL}/posts/${_id}`, {
+        method: "DELETE",
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('jwt')}`
         }
     }).then<IMessage>(checkResponse)
 }

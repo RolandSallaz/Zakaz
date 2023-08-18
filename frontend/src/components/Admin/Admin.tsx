@@ -11,7 +11,7 @@ interface IProps {
 
 export function Admin({onLogin}: IProps) {
     const [password, setPassword] = useState<string>('')
-    const [modalOpen, setModalOpen] = useState<ADMIN_POPUPS | null>(null)
+    const [modalOpen, setModalOpen] = useState<ADMIN_POPUPS | false>(false)
     const addPostRef = useRef<HTMLFormElement | null>(null)
     const loggedIn = useContext(LoggedInContext)
 
@@ -36,7 +36,7 @@ export function Admin({onLogin}: IProps) {
     }
 
     function closePopups() {
-        setModalOpen(null)
+        setModalOpen(false)
     }
 
     return (
@@ -50,15 +50,18 @@ export function Admin({onLogin}: IProps) {
                             <button className={'admin__button'}>Добавить слайдер</button>
                             <button className={'admin__button'}>Удалить слайдер</button>
                         </div>
-                        <AdminPopup onSubmit={handleAddPostSubmit} isOpen={modalOpen === ADMIN_POPUPS.ADD_POST}
-                                    onClose={closePopups} refProp={addPostRef as MutableRefObject<HTMLFormElement>}>
-                            <input className={'admin-modal__input'} placeholder='image' name='image' type="file"
-                                   accept="image/*"/>
-                            <input className={'admin-modal__input'} placeholder='Заголовок' name='heading'/>
-                            <textarea className={'admin-modal__input admin-modal__textfield'} placeholder='Текст'
-                                      name='description'/>
-                            <button className={'admin-modal__submit-button'}>Отправить</button>
-                        </AdminPopup>
+                        {modalOpen === ADMIN_POPUPS.ADD_POST && (
+                            <AdminPopup onSubmit={handleAddPostSubmit}
+                                        onClose={closePopups}
+                                        refProp={addPostRef as MutableRefObject<HTMLFormElement>}
+                                        heading={'Добавить пост'}>
+                                <input className={'admin-modal__input'} placeholder='image' name='image' type="file"
+                                       accept="image/*"/>
+                                <input className={'admin-modal__input'} placeholder='Заголовок' name='heading'/>
+                                <textarea className={'admin-modal__input admin-modal__textfield'} placeholder='Текст'
+                                          name='description'/>
+                            </AdminPopup>
+                        )}
                     </>
                 )
                 :

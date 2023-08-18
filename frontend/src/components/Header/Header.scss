@@ -4,9 +4,10 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  user-select: none;
-  pointer-events: none;
+
   &__container {
+    user-select: none;
+    pointer-events: none;
     margin-top: 115px;
   }
 
@@ -49,6 +50,7 @@
     font-weight: 500;
 
     &:hover {
+      border-radius: 5px;
       background-color: #be6b29;
       transition: background-color 0.4s ease-in-out;
     }

@@ -13,6 +13,14 @@ export function getPosts(req: Request, res: Response, next: NextFunction) {
     .catch(next)
 }
 
+export function deletePost(req: Request, res: Response, next: NextFunction) {
+  Post.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.send({ message: 'Пост удален' })
+    })
+    .catch(next)
+}
+
 export function addPost(req: Request, res: Response, next: NextFunction) {
   const { heading, description } = req.body
   const image = req.files?.image as UploadedFile

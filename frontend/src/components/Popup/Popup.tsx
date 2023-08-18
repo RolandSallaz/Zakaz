@@ -1,6 +1,5 @@
 import './Popup.scss'
-import {ReactNode, SyntheticEvent, useState} from "react";
-import {IPost} from "../../types/interfaces";
+import {ReactNode, SyntheticEvent} from "react";
 
 type Props = {
     children?: ReactNode,
@@ -22,4 +21,4 @@ export function Popup({children, onClose, isOpen}: Props) {
             </div>
         </div>
     );
-};
+}

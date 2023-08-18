@@ -1,48 +1,58 @@
 @import '../../utils/variables';
+
 $width: 500px;
 
-.admin-modal{
-  display: none;
+.admin-modal {
+  position: fixed;
+  top: 50%;
   left: calc(50% - $width / 2);
-  top:30%;
-  position: absolute;
   width: 500px;
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  border:1px solid black;
-  &__close-button{
+  border: 1px solid black;
+
+  &__heading {
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__close-button {
     position: absolute;
     right: 0px;
-    top:0px;
+    top: 0px;
     background: none;
     border: none;
     font-size: 40px;
-    margin:0 0 auto auto;
+    margin: 0 0 auto auto;
     cursor: pointer;
   }
-  &__form{
+
+  &__form {
     display: flex;
     flex-direction: column;
   }
-  &__input{
+
+  &__input {
     min-height: 30px;
-    margin:20px 0;
+    margin: 20px 0;
     max-width: 100%;
     min-width: 100%;
     border-radius: 3px;
   }
-  &__textfield{
+
+  &__textfield {
     min-height: 250px;
   }
-  &__submit-button{
+
+  &__submit-button {
     height: 40px;
-    color:white;
+    color: white;
     background-color: $orangeSelect;
     border: none;
     border-radius: 3px;
-  }
-  &_open{
-    display: block;
+    cursor: pointer;
   }
 }

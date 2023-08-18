@@ -7,6 +7,7 @@ import {Footer} from "../Footer/Footer";
 import {useEffect, useState} from "react";
 import {adminLogin, checkToken} from "../../utils/Api";
 import {LoggedInContext} from "../../contexts/LoggedInContexts";
+import {NotFound} from "../NotFound/NotFound";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState<boolean>(false)
@@ -31,8 +32,9 @@ function App() {
             <Header/>
             <main className='main'>
                 <Routes>
-                    <Route path='/Zakaz' element={<News/>}/>
-                    <Route path='/Zakaz/admin' element={<Admin onLogin={handleLoginSubmit}/>}/>
+                    <Route path='/' element={<News/>}/>
+                    <Route path='/admin' element={<Admin onLogin={handleLoginSubmit}/>}/>
+                    <Route path='*' element={<NotFound/>}/>
                 </Routes>
             </main>
             <Footer/>
