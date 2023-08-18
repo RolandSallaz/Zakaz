@@ -8,8 +8,9 @@ const router = Router()
 
 router.get('/posts', getPosts)
 router.use('/admin/signin', signIn)
-router.post('/posts', auth, addPost)
-router.get('/admin/checkToken', auth, (_, res: Response) => res.send({ message: 'Токен валиден' }))
+router.use(auth)
+router.post('/posts', addPost)
+router.get('/admin/checkToken', (_, res: Response) => res.send({ message: 'Токен валиден' }))
 router.use((_, __, next: NextFunction) => next(new NotFoundError()))
 
 export default router

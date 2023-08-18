@@ -10,6 +10,7 @@ const app = express()
 mongoose.connect(DB_ADRESS)
 app.use(cors())
 app.use(express.json())
+app.use('/images', express.static('images'));
 app.use(
   fileUpload({
     limits: {

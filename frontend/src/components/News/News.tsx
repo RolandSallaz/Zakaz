@@ -12,13 +12,17 @@ import {Popup} from "../Popup/Popup";
 export function News() {
     const [posts, setPosts] = useState<IPost[]>([])
     const [selectedPost, setSelectedPost] = useState<IPost | null>(null)
-
+    const [isPopupOpened, setIsPopupOpened] = useState<boolean>(false);
     function handlePostClick(post: IPost) {
         setSelectedPost(post)
+        setIsPopupOpened(true);
     }
 
     function handleClosePopup() {
-        setSelectedPost(null)
+        setIsPopupOpened(false)
+        // Таймаут нужен, чтобы пост закрывался плавно, иначе он пропадает раньше закрытия
+        setTimeout(()=>setSelectedPost(null),200)
+
     }
 
     useEffect(() => {
@@ -46,11 +50,11 @@ export function News() {
                 </Slider>
             </section>
             <section className='posts'>
-                {posts.map((item) => (<Post item={item} onPostClick={handlePostClick}/>))}
+                {posts.map((item, index) => (<Post key={index} item={item} onPostClick={handlePostClick}/>))}
             </section>
-            {selectedPost && <Popup onClose={handleClosePopup}>
-                <Post item={selectedPost} onPostClick={handlePostClick} isReading/>
-            </Popup>}
+            <Popup onClose={handleClosePopup} isOpen={isPopupOpened}>
+                {selectedPost && (<Post item={selectedPost} onPostClick={handlePostClick} isReading/>)}
+            </Popup>
         </div>
     );
 }

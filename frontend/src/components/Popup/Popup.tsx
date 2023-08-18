@@ -1,13 +1,14 @@
 import './Popup.scss'
-import {ReactNode, SyntheticEvent} from "react";
+import {ReactNode, SyntheticEvent, useState} from "react";
+import {IPost} from "../../types/interfaces";
 
 type Props = {
     children?: ReactNode,
     onClose: () => void,
+    isOpen: boolean
 };
 
-export function Popup({children, onClose}: Props) {
-
+export function Popup({children, onClose, isOpen}: Props) {
     function handleClose(e: SyntheticEvent) {
         if (e.target === e.currentTarget) {
             onClose()
@@ -15,8 +16,8 @@ export function Popup({children, onClose}: Props) {
     }
 
     return (
-        <div className='popup' onClick={handleClose}>
-            <div className='popup__container'>
+        <div className={`popup ${isOpen && 'popup_opened'}`} onClick={handleClose}>
+            <div className={`popup__container ${isOpen && 'popup__container_opened'}`}>
                 {children}
             </div>
         </div>

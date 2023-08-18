@@ -8,7 +8,10 @@
   left: 0;
   bottom: 0;
   right: 0;
-
+  visibility: hidden;
+  &_opened{
+    visibility: visible;
+  }
   &__container {
     width: 600px;
     padding: 40px;
@@ -17,5 +20,11 @@
     background-color: white;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
+    scale: 0.5;
+    transition: all 0.2s ease-out;
+    &_opened{
+      scale: 1;
+
+    }
   }
 }
