@@ -1,7 +1,10 @@
 import './Header.scss'
 import {Link} from "react-router-dom";
+import {useContext} from "react";
+import {LoggedInContext} from "../../contexts/LoggedInContexts";
 
 export function Header() {
+    const loggedIn = useContext(LoggedInContext)
     return (
         <header className='header'>
             <div className='header__container'>
@@ -24,6 +27,7 @@ export function Header() {
                 <Link className='nav__link' to={'/information'}>Информация</Link>
                 <Link className='nav__link' to={'/catalog'}>Каталог услуг</Link>
                 <Link className='nav__link' to={'/documentation'}>Документации</Link>
+                {loggedIn && ( <Link className='nav__link' to={'/admin'}>Админка</Link>)}
             </nav>
         </header>
     );

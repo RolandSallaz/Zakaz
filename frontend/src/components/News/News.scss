@@ -4,6 +4,12 @@
 
 .news {
   height: 100%;
+  &__heading{
+    font-size: 45px;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 1px 1px 1px #884d4d;
+  }
 }
 
 .news-item {
@@ -39,9 +45,10 @@
 // posts
 
 .posts {
+  list-style: none;
+  padding: 0;
   margin-top: $marginTop;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: row;
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
 }

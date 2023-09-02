@@ -4,7 +4,7 @@ $width: 500px;
 
 .admin-modal {
   position: fixed;
-  top: 50%;
+  bottom: auto;
   left: calc(50% - $width / 2);
   width: 500px;
   background-color: white;

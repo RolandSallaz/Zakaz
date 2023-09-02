@@ -68,9 +68,11 @@ export function News() {
                     <img className={'news-item__image'} src={image3} alt='Трактор работает'/>
                 </Slider>
             </section>
+            <h2 className={'news__heading'}>Новости</h2>
             <section className='posts'>
-                {posts.map((item, index) => (<Post key={index} item={item} onPostClick={handlePostClick}
-                                                   onDeleteClick={handleDeletePopupClick}/>))}
+                {posts.map((item, index) => (
+                    <Post key={index} item={item} onPostClick={handlePostClick}
+                          onDeleteClick={handleDeletePopupClick}/>))}
             </section>
             <Popup onClose={handleClosePopups} isOpen={isPopupOpened}>
                 {selectedPost && (
@@ -80,11 +82,14 @@ export function News() {
                     />
                 )}
             </Popup>
-            {(loggedIn && selectedPostToDelete) && (
-                <AdminPopup heading={`Удалить пост ${selectedPostToDelete.heading}?`} onClose={handleClosePopups}
-                            onSubmit={handleDeletePostSubmit}>
+            {
+                (loggedIn && selectedPostToDelete) && (
+                    <AdminPopup heading={`Удалить пост ${selectedPostToDelete.heading}?`} onClose={handleClosePopups}
+                                onSubmit={handleDeletePostSubmit}>
 
-                </AdminPopup>)}
+                    </AdminPopup>)
+            }
         </div>
-    );
+    )
+        ;
 }
