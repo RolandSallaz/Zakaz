@@ -1,2 +1,6 @@
-$orangeSelect: #f3700f;
+$mainColor: #4d316e;
 $marginTop:20px;
+
+@mixin select-main-color {
+  color: $mainColor;
+}

@@ -1,13 +1,14 @@
 import './App.scss'
 import {Header} from "../Header/Header";
 import {Route, Routes} from "react-router-dom";
-import {News} from "../News/News";
 import {Admin} from "../Admin/Admin";
 import {Footer} from "../Footer/Footer";
 import {useEffect, useState} from "react";
 import {adminLogin, checkToken} from "../../utils/Api";
 import {LoggedInContext} from "../../contexts/LoggedInContexts";
 import {NotFound} from "../NotFound/NotFound";
+import {About} from "../About/About";
+import {Catalog} from "../Catalog/Catalog";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState<boolean>(false)
@@ -32,7 +33,9 @@ function App() {
             <Header/>
             <main className='main'>
                 <Routes>
-                    <Route path='/' element={<News/>}/>
+                    {/*<Route path='/' element={<News/>}/>*/}
+                    <Route path={'/'} element={<About/>}/>
+                    <Route path={'/catalog'} element={<Catalog/>}/>
                     <Route path='/admin' element={<Admin onLogin={handleLoginSubmit}/>}/>
                     <Route path='*' element={<NotFound/>}/>
                 </Routes>
