@@ -1,6 +1,6 @@
 import './About.scss';
 
-export function About(props: Props) {
+export function About() {
     return (
         <section className='about'>
             <h2 className={'about__heading'}>О нас</h2>
